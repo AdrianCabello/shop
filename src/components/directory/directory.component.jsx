@@ -1,35 +1,60 @@
 import React from 'react';
 
-import MenuItem from '../menu-item/menu-item.compont';
+import MenuItem from '../menu-item/menu-item.component';
 
-import './directory.styles.scss'
+import './directory.styles.scss';
 
 class Directory extends React.Component {
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        this.state = {
-            sections: [
-                { title: 'hats', imageUrl: 'https://http2.mlstatic.com/D_NQ_NP_680727-MLA25689030617_062017-O.webp', id: 1 },
-                { title: 'hats', imageUrl: 'https://http2.mlstatic.com/D_NQ_NP_680727-MLA25689030617_062017-O.webp', id: 1 },
-                { title: 'hats', imageUrl: 'https://http2.mlstatic.com/D_NQ_NP_680727-MLA25689030617_062017-O.webp', id: 1 },                
-                { title: 'jackest', size: 'large', imageUrl: 'https://www.contreebute.com/hs-fs/hubfs/photo-1512436991641-6745cdb1723f.jpeg?width=800&name=photo-1512436991641-6745cdb1723f.jpeg', id: 2 },
-                { title: 'Sneakers', size: 'large', imageUrl: 'https://media.revistagq.com/photos/5ea701f67cd6bf0008ceebbc/master/w_1600%2Cc_limit/moda-hombre-4.jpg', id: 3 }
-            ]
+    this.state = {
+      sections: [
+        {
+          title: 'hats',
+          imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
+          id: 1,
+          linkUrl: 'hats'
+        },
+        {
+          title: 'jackets',
+          imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png',
+          id: 2,
+          linkUrl: ''
+        },
+        {
+          title: 'sneakers',
+          imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
+          id: 3,
+          linkUrl: ''
+        },
+        {
+          title: 'womens',
+          imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
+          size: 'large',
+          id: 4,
+          linkUrl: ''
+        },
+        {
+          title: 'mens',
+          imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
+          size: 'large',
+          id: 5,
+          linkUrl: ''
         }
-    }
+      ]
+    };
+  }
 
-    render() {
-        return (
-            <div className='directory-menu'>
-                {
-                    this.state.sections.map(({ title, imageUrl, id, size }) => (
-                        <MenuItem key={id} title={title} imageUrl={imageUrl} size={size} />
-                    ))
-                }
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div className='directory-menu'>
+        {this.state.sections.map(({ id, ...otherSectionProps }) => (
+          <MenuItem key={id} {...otherSectionProps} />
+        ))}
+      </div>
+    );
+  }
 }
 
-export default Directory
+export default Directory;
